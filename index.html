@@ -4,7 +4,29 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My Portfolio</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="styles.css"> 
+    <script type="text/javascript">
+        (function() {
+            // https://dashboard.emailjs.com/admin/account
+            emailjs.init({
+              publicKey: "YOUR_PUBLIC_KEY",
+            });
+        })();
+    </script>
+    <script type="text/javascript">
+        window.onload = function() {
+            document.getElementById('contact-form').addEventListener('submit', function(event) {
+                event.preventDefault();
+                // these IDs from the previous steps
+                emailjs.sendForm('contact_service', 'contact_form', this)
+                    .then(() => {
+                        console.log('SUCCESS!');
+                    }, (error) => {
+                        console.log('FAILED...', error);
+                    });
+            });
+        }
+    </script>
 </head>
 <body>
     <header>
@@ -33,10 +55,11 @@
                 <p>Here are some of my basic IT skills:</p>
                 <ul>
                     <li>HTML</li>
-                    <li>CSS</li>
-                    <li>JavaScript</li>
-                    <li>Python</li>
-                    <li>LinkedIn SEO, Basic Marketing Analytics and Youtube Marketing</li>
+                        <li>CSS</li>
+                            <li>JavaScript</li>
+                                <li>Python</li>
+                                    <li>LinkedIn SEO, Basic Marketing Analytics 
+                                        <li>Youtube Marketing</li>
                 </ul>
             </article>
         </section>
@@ -81,7 +104,8 @@
                     <label for="message">Message:</label>
                     <textarea id="message" required></textarea>
                 </div>
-                <button type="submit">Send Message</button>
+                <!-- <button type="submit">Send Message</button> -->
+                <input type="submit" value="Send">
             </form>
         </section>
     </main>
